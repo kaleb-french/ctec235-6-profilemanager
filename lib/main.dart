@@ -22,9 +22,24 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ProfileScreen extends StatelessWidget{
+class ProfileScreen extends StatefulWidget{
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+
+
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  //f
+  String _currentUsername = 'Guest';
+  //m
+  void _updateUsername(String newName){
+    setState(() {
+      _currentUsername = newName;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +48,8 @@ class ProfileScreen extends StatelessWidget{
       ),
       body: Column(
         children: [
-          UserBanner(),
-          ProfileForm(),
+          UserBanner(userName: _currentUsername),
+          ProfileForm(onSaveUsername: _updateUsername,),
         ]
       )
     );
@@ -42,15 +57,17 @@ class ProfileScreen extends StatelessWidget{
 }
 
 class UserBanner extends StatelessWidget{
-  const UserBanner({super.key});
-
+  const UserBanner({super.key, required this.userName});
+  //f
+  final String userName;
+  //m
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Welcome Guest!"),
+          Text("Welcome $userName!"),
           FavoriteButton(),
         ],
       ),

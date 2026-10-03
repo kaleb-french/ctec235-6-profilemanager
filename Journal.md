@@ -6,3 +6,6 @@ A statless widget doen't maintain a mutable or changeable state. However the Sta
 
 Phase 2-
 The GlobalKey<FormState> is created in the form ala the _formKey.currentState!.validate() to on submit pressed check the form it was created for and run the validators on all form fields to validate the whole form at once.
+
+Phase 3-
+The username variable needs to be inplace where both sides can access. The form is where the username is being set, but the UserBanner is where the username is being displayed. Because of this it has to been in profilescreen so it can be passed from the form to the banner. The favorite button in this case is more self-contained having the proties to display the button and change it in the same stateful widget.

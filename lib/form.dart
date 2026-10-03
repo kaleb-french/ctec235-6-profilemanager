@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProfileForm extends StatefulWidget {
-  const ProfileForm({super.key});
+  //f
+  final ValueChanged<String> onSaveUsername;
+  const ProfileForm({super.key, required this.onSaveUsername});
 
   @override
   State<ProfileForm> createState() => _ProfileFormState();
@@ -44,6 +46,7 @@ class _ProfileFormState extends State<ProfileForm> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  widget.onSaveUsername(_usernameController.text);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
