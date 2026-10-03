@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'form.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ProfileScreen(),
+      home:
+          ProfileScreen(),
     );
   }
 }
@@ -29,7 +31,12 @@ class ProfileScreen extends StatelessWidget{
       appBar: AppBar(
         title: Text("User Profile Manager"),
       ),
-      body: UserBanner(),
+      body: Column(
+        children: [
+          UserBanner(),
+          ProfileForm(),
+        ]
+      )
     );
   }
 }
